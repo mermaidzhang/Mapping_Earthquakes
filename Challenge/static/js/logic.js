@@ -46,14 +46,12 @@ let baseMaps = {
     Satellite: satelliteStreets
   };
 
-  // Create the earthquake layer for our map.
+// 1. Add a 2nd layer group for the tectonic plate data.
 let earthquakes = new L.layerGroup();
-
-// Create the tectonic plate lines layer for our map:
 let tectonic = new L.layerGroup();
 
-// We define an object that contains the overlays.
-// This overlay will be visible all the time.
+// 2. Add a reference to the tectonic plates group to the overlays object.
+
 let overlays = {
     Earthquakes: earthquakes,
     Tectonic: tectonic
@@ -166,7 +164,8 @@ legend.addTo(map);
 
     earthquakes.addTo(map);
 
-}); // ends D3 call for earthquake data
+}); 
+// 3. Use d3.json to make a call to get our Tectonic Plate geoJSON data.
 
 d3.json(tectonicplates).then(function(data) {
 
@@ -174,4 +173,4 @@ d3.json(tectonicplates).then(function(data) {
 
   tectonic.addTo(map);
 
-}); // ends D3 call for tectonic plates
+}); 
